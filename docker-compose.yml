@@ -107,12 +107,12 @@ services:
   queue:
     image: rabbitmq:3
     # Using the below image instead is required to enable the "Broker" tab in the flower UI:
-    # image: rabbitmq:3-management
+#     image: rabbitmq:3-management
     #
     # You also have to change the flower command
   
   flower:
-    image: mher/flower
+    image: mher/flower:0.9.7
     networks:
       - ${TRAEFIK_PUBLIC_NETWORK?Variable not set}
       - default
@@ -122,7 +122,7 @@ services:
       - "--broker=amqp://guest@queue:5672//"
       # For the "Broker" tab to work in the flower UI, uncomment the following command argument,
       # and change the queue service's image as well
-      # - "--broker_api=http://guest:guest@queue:15672/api//"
+#       - "--broker_api=http://guest:guest@queue:15672/api//"
     deploy:
       labels:
         - traefik.enable=true
