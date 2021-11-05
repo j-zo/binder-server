@@ -19,3 +19,13 @@ if settings.BACKEND_CORS_ORIGINS:
     )
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
+
+if __name__ == "__main__":  # pragma: no cover
+    import uvicorn
+
+    uvicorn.run(
+        "app.main:app",
+        # port=80,
+        reload=True,
+        reload_dirs=["app"]
+    )

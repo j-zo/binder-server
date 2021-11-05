@@ -103,6 +103,7 @@ celerybeat.pid
 
 # Environments
 .env
+.env.local
 .venv
 env/
 venv/
@@ -131,3 +132,4 @@ dmypy.json
 # FastAPI cookiecutter specific
 docker-stack.yml
 .mypy_cache
+.idea/
