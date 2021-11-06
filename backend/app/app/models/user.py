@@ -12,7 +12,8 @@ class User(Base):
     password = Column(String, nullable=False)
     birthday = Column(Date, nullable=False, index=True)
     about = Column(String(250))
-    is_author = Column(Boolean, default=False)
-
+    is_author = Column(Boolean, index=True, default=False)
     books = relationship("Book", back_populates="author")
     reviews = relationship("Review", back_populates="author")
+    markedbooks = relationship("MarkedBook", back_populates="user")
+

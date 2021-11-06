@@ -9,8 +9,7 @@ class Review(Base):
     id = Column(Integer, primary_key=True, index=True)
     score = Column(Integer, CheckConstraint("0 <= score >= 5"), nullable=False)
     comment = Column(String, nullable=False)
-    author_id = Column(Integer, ForeignKey("user.id"), ondelete="CASCADE")
-    book_id = Column(Integer, ForeignKey("book.id"), ondelete="CASCADE")
-
+    author_id = Column(Integer, ForeignKey("user.id"), index=True, ondelete="CASCADE")
+    book_id = Column(Integer, ForeignKey("book.id"), index=True, ondelete="CASCADE")
     author = relationship("User", back_populates="reviews")
     book = relationship("Book", back_populates="reviews")
