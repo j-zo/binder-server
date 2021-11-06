@@ -1,4 +1,5 @@
 from sqlalchemy import Boolean, Column, Date, Integer, String
+from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
 
@@ -11,4 +12,6 @@ class User(Base):
     password = Column(String, nullable=False)
     birthday = Column(Date, nullable=False, index=True)
     about = Column(String(250))
-    is_author = Column(Boolean(), default=False)
+    is_author = Column(Boolean, default=False)
+
+    books = relationship("Book", back_populates="author")
