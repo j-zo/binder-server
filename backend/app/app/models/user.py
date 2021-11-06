@@ -15,3 +15,4 @@ class User(Base):
     is_author = Column(Boolean, default=False)
 
     books = relationship("Book", back_populates="author")
+    reviews = relationship("Review", back_populates="author")

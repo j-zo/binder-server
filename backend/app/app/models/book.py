@@ -17,7 +17,8 @@ class Book(Base):
     small_description = Column(String(250), unique=True, nullable=False)
     big_description = Column(String, unique=True, nullable=False)
     is_blocked = Column(Boolean, default=False)
-    author_id = Column(Integer, ForeignKey("user.user_id"), ondelete="SET NULL")
+    author_id = Column(Integer, ForeignKey("user.id"), ondelete="SET NULL")
 
     genres = relationship("Genre", secondary=book_genre_association, back_populates="books")
     author = relationship("User", back_populates="books")
+    reviews = relationship("Review", back_populates="book")
