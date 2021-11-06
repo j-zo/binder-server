@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, Date, Integer, String
+from sqlalchemy import Boolean, CheckConstraint, Column, Date, Integer, String
 from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
@@ -9,7 +9,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     full_name = Column(String(40), unique=True, index=True, nullable=False)
     email = Column(String(40), unique=True, index=True, nullable=False)
-    password = Column(String, nullable=False)
+    password = Column(String, CheckConstraint("len(password) >= 8"), nullable=False)
     birthday = Column(Date, nullable=False, index=True)
     about = Column(String(250))
     is_author = Column(Boolean, index=True, default=False)
