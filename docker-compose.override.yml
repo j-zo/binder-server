@@ -46,7 +46,7 @@ services:
       - SERVER_HOST=http://${DOMAIN?Variable not set}
     build:
       context: ./backend
-      dockerfile: backend.dockerfile
+      dockerfile: backend.Dockerfile
       args:
         INSTALL_DEV: ${INSTALL_DEV-true}
         INSTALL_JUPYTER: ${INSTALL_JUPYTER-true}
@@ -67,7 +67,7 @@ services:
       - SERVER_HOST=http://${DOMAIN?Variable not set}
     build:
       context: ./backend
-      dockerfile: celeryworker.dockerfile
+      dockerfile: celeryworker.Dockerfile
       args:
         INSTALL_DEV: ${INSTALL_DEV-true}
         INSTALL_JUPYTER: ${INSTALL_JUPYTER-true}
